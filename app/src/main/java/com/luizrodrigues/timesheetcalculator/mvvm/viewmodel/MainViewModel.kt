@@ -11,6 +11,7 @@ class MainViewModel : ViewModel() {
     var horasTrabalhadas = MutableLiveData<String>()
     var horasExtras = MutableLiveData<String>()
     var horasApontamento = MutableLiveData<String>()
+    var corChangeDaynight = MutableLiveData<Int>()
     val mask: String = "##:##"
 
     fun onResetClick() = this.clearAllFields()
@@ -24,4 +25,5 @@ class MainViewModel : ViewModel() {
         this.horasExtras.value = ""
         this.horasApontamento.value = ""
     }
+
 }
