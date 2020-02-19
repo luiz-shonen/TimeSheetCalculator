@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="horas_base_array">
+        <item>06:00</item>
+        <item>08:00</item>
+    </string-array>
+</resources>

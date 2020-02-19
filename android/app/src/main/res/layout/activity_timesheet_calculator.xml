@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.luizrodrigues.timesheetcalculator.mvvm.viewmodel.MainViewModel" />
+    </data>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/toolbar_gradient">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_user_photo"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="6dp"
+                        android:elevation="12dp"
+                        app:cardCornerRadius="36dp">
+
+                        <ImageView
+                            android:id="@+id/user_photo"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/timesheet_calculator_alter"
+                            tools:ignore="ContentDescription" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/app_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/card_view_user_photo"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:text="@string/app_name"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:ignore="RelativeOverlap" />
+
+                    <ImageButton
+                        android:id="@+id/change_daynight"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/ic_brightness_2_24dp"
+                        android:tint="@{viewmodel.corChangeDaynight}"
+                        tools:ignore="ContentDescription" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/toolbar"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/label_horas_base"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_toStartOf="@id/horas_base"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas_base"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/horas_base"
+                            android:layout_width="115dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:entries="@array/horas_base_array" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/label_horas_tolerancia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_toStartOf="@id/horas_tolerancia"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas_tolerancia"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <Spinner
+                            android:id="@+id/horas_tolerancia"
+                            android:layout_width="115dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:entries="@array/horas_tolerancia_array" />
+                    </RelativeLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/label_hora_chegada"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:hint="@string/horario_chegada"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:errorEnabled="true"
+                        app:helperText="@string/helper_horario_chegada"
+                        app:startIconDrawable="@drawable/ic_today_24dp"
+                        app:startIconTint="@color/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/input_hora_chegada"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint='@{viewmodel.horaChegada, default="00:00"}'
+                            android:inputType="time"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:text='@={viewmodel.horaChegada, default="00:00"}' />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/label_hora_saida_almoco"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:hint="@string/horario_saida"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:helperText="@string/helper_horario_saida_almoco"
+                        app:startIconDrawable="@drawable/ic_today_24dp"
+                        app:startIconTint="@color/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/input_hora_saida_almoco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint='@{viewmodel.horaSaidaAlmoco, default="00:00"}'
+                            android:inputType="time"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:text='@={viewmodel.horaSaidaAlmoco, default="00:00"}' />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/label_hora_chegada_almoco"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp"
+                        android:hint="@string/horario_chegada"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:helperText="@string/helper_horario_chegada_almoco"
+                        app:startIconDrawable="@drawable/ic_today_24dp"
+                        app:startIconTint="@color/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/input_hora_chegada_almoco"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint='@{viewmodel.horaChegadaAlmoco, default="00:00"}'
+                            android:inputType="time"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:text='@={viewmodel.horaChegadaAlmoco, default="00:00"}' />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/label_hora_saida"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/horario_saida"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/colorPrimary"
+                        app:helperText="@string/helper_horario_saida"
+                        app:startIconDrawable="@drawable/ic_today_24dp"
+                        app:startIconTint="@color/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/input_hora_saida"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint='@{viewmodel.horaSaida, default="00:00"}'
+                            android:inputType="time"
+                            android:maxLength="5"
+                            android:maxLines="1"
+                            android:text='@={viewmodel.horaSaida, default="00:00"}' />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_limpar"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:onClick="@{() -> viewmodel.onResetClick()}"
+                            android:text="@string/limpar" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/tile_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginBottom="36dp"
+                    android:background="@drawable/divider_gradient" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/label_hora_trabalhada"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas_trabalhadas"
+                            android:textAlignment="textEnd"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/value_hora_trabalhada"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:focusable="false"
+                            android:hint='@{viewmodel.horasTrabalhadas, default="00:00"}'
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text='@={viewmodel.horasTrabalhadas, default="00:00"}'
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/label_hora_extra_negativa"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas_extras_negativas"
+                            android:textAlignment="textEnd"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/value_minus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:text="@string/minus"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:visibility="invisible" />
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/value_hora_extra_negativa"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint='@{viewmodel.horasExtras, default="00:00"}'
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text='@={viewmodel.horasExtras, default="00:00"}'
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/label_hora_apontamento"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas_apontamento"
+                            android:textAlignment="textEnd"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:id="@+id/value_hora_apontamento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:focusable="false"
+                            android:hint='@{viewmodel.horasApontamento, default="00:00"}'
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text='@={viewmodel.horasApontamento, default="00:00"}'
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</layout>
