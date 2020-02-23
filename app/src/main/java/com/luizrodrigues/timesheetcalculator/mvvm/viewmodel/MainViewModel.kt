@@ -1,9 +1,7 @@
 package com.luizrodrigues.timesheetcalculator.mvvm.viewmodel
 
-import android.text.TextWatcher
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.luizrodrigues.timesheetcalculator.util.MaskWatcher
 
 class MainViewModel : ViewModel() {
     var horaChegada = MutableLiveData<String>()
@@ -15,7 +13,6 @@ class MainViewModel : ViewModel() {
     var horasApontamento = MutableLiveData<String>()
     var corChangeDaynight = MutableLiveData<Int>()
     var showNumberPickerDialog = MutableLiveData<Pair<Boolean, String>>(Pair(false, ""))
-    var hourWatcher: TextWatcher = MaskWatcher.buildTime()
 
     fun onResetClick() = this.clearAllFields()
 
