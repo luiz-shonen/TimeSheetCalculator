@@ -12,6 +12,7 @@ class MainViewModel : ViewModel() {
     var horasExtras = MutableLiveData<String>()
     var horasApontamento = MutableLiveData<String>()
     var corChangeDaynight = MutableLiveData<Int>()
+    var showNumberPickerDialog = MutableLiveData<Pair<Boolean, String>>(Pair(false, ""))
     val mask: String = "##:##"
 
     fun onResetClick() = this.clearAllFields()
@@ -24,6 +25,11 @@ class MainViewModel : ViewModel() {
         this.horasTrabalhadas.value = ""
         this.horasExtras.value = ""
         this.horasApontamento.value = ""
+        this.showNumberPickerDialog.value = Pair(false, "")
+    }
+
+    fun openNumberPickerDialog(clickedField: String) {
+        showNumberPickerDialog.value = Pair(true, clickedField)
     }
 
 }

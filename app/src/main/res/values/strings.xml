@@ -16,4 +16,7 @@
     <string name="msg_erro_campo_obrigatorio">Este campo é obrigatório!</string>
     <string name="user_photo">User Photo</string>
     <string name="minus">-</string>
+    <string name="salvar">Salvar</string>
+    <string name="hour">Hora</string>
+    <string name="minute">Minuto</string>
 </resources>

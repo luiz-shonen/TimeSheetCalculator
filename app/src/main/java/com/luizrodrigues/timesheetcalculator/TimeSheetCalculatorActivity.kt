@@ -2,13 +2,13 @@ package com.luizrodrigues.timesheetcalculator
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.luizrodrigues.timesheetcalculator.databinding.ActivityTimesheetCalculatorBinding
+import com.luizrodrigues.timesheetcalculator.mvvm.view.DialogNumberPickerFragment
 import com.luizrodrigues.timesheetcalculator.mvvm.viewmodel.MainViewModel
 
 class TimeSheetCalculatorActivity : AppCompatActivity() {
@@ -31,16 +31,15 @@ class TimeSheetCalculatorActivity : AppCompatActivity() {
             this.viewmodel = mainViewModel
         }
 
-        mainViewModel.horaChegada.observe(this, Observer {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-            mainViewModel.horaSaida.value = "123123123"
-        })
-
         binding.changeDaynight.setOnClickListener {
             onDayNightChangeClick()
         }
 
         verifyDayNight(true)
+
+        mainViewModel.showNumberPickerDialog.observe(this, Observer {
+            if (it.first) showNumberPickerDialog(it.second)
+        })
     }
 
     private fun onDayNightChangeClick() {
@@ -49,6 +48,7 @@ class TimeSheetCalculatorActivity : AppCompatActivity() {
     }
 
     private fun verifyDayNight(isVerifyingColor: Boolean) {
+        mainViewModel.showNumberPickerDialog.value = Pair(false, "")
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> { // Night mode is not active, we're using the light theme
                 if (isVerifyingColor) {
@@ -65,5 +65,9 @@ class TimeSheetCalculatorActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showNumberPickerDialog(clickedField: String) {
+        DialogNumberPickerFragment(mainViewModel, clickedField).show(supportFragmentManager, "numberPickerDialog")
     }
 }

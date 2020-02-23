@@ -163,10 +163,12 @@
                             android:id="@+id/input_hora_chegada"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint='@{viewmodel.horaChegada, default="00:00"}'
                             android:inputType="time"
                             android:maxLength="5"
                             android:maxLines="1"
+                            android:onClick='@{() -> viewmodel.openNumberPickerDialog("inputHoraChegada")}'
                             android:text='@={viewmodel.horaChegada, default="00:00"}' />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -188,10 +190,12 @@
                             android:id="@+id/input_hora_saida_almoco"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint='@{viewmodel.horaSaidaAlmoco, default="00:00"}'
                             android:inputType="time"
                             android:maxLength="5"
                             android:maxLines="1"
+                            android:onClick='@{() -> viewmodel.openNumberPickerDialog("inputHoraSaidaAlmoco")}'
                             android:text='@={viewmodel.horaSaidaAlmoco, default="00:00"}' />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -213,10 +217,12 @@
                             android:id="@+id/input_hora_chegada_almoco"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint='@{viewmodel.horaChegadaAlmoco, default="00:00"}'
                             android:inputType="time"
                             android:maxLength="5"
                             android:maxLines="1"
+                            android:onClick='@{() -> viewmodel.openNumberPickerDialog("inputHoraChegadaAlmoco")}'
                             android:text='@={viewmodel.horaChegadaAlmoco, default="00:00"}' />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -238,10 +244,12 @@
                             android:id="@+id/input_hora_saida"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:focusable="false"
                             android:hint='@{viewmodel.horaSaida, default="00:00"}'
                             android:inputType="time"
                             android:maxLength="5"
                             android:maxLines="1"
+                            android:onClick='@{() -> viewmodel.openNumberPickerDialog("inputHoraSaida")}'
                             android:text='@={viewmodel.horaSaida, default="00:00"}' />
 
                     </com.google.android.material.textfield.TextInputLayout>
