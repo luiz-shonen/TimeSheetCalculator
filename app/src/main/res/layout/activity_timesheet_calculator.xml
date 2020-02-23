@@ -168,6 +168,7 @@
                             android:inputType="time"
                             android:maxLength="5"
                             android:maxLines="1"
+                            android:addTextChangedListener="@{viewmodel.hourWatcher}"
                             android:onClick='@{() -> viewmodel.openNumberPickerDialog("inputHoraChegada")}'
                             android:text='@={viewmodel.horaChegada, default="00:00"}' />
 
