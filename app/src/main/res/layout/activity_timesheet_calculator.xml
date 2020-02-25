@@ -22,7 +22,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="?attr/actionBarSize"
                 android:layout_alignParentTop="true"
                 android:background="@drawable/toolbar_gradient">
 
@@ -35,6 +35,7 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
                         android:layout_margin="6dp"
                         android:elevation="12dp"
                         app:cardCornerRadius="36dp">
@@ -67,12 +68,12 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:layout_marginTop="6dp"
                         android:layout_marginEnd="16dp"
                         android:backgroundTint="@android:color/transparent"
                         android:foreground="?android:attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_brightness_2_24dp"
-                        android:tint="@{viewmodel.corChangeDaynight}"
                         tools:ignore="ContentDescription" />
 
                 </RelativeLayout>
@@ -273,34 +274,44 @@
 
                 </LinearLayout>
 
-                <View
-                    android:id="@+id/tile_divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="6dp"
-                    android:layout_marginBottom="36dp"
-                    android:background="@drawable/divider_gradient" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/border_gradient"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_marginBottom="12dp"
+                        android:orientation="horizontal"
+                        android:padding="6dp">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="true"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
                             android:id="@+id/label_hora_trabalhada"
-                            android:layout_width="180dp"
+                            android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
-                            android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:shadowColor="@color/colorAccent"
                             android:shadowRadius="2"
                             android:text="@string/horas_trabalhadas"
-                            android:textAlignment="textEnd"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="true"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -321,19 +332,34 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_marginBottom="12dp"
+                        android:orientation="horizontal"
+                        android:padding="6dp">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas"
+                            android:textAlignment="textEnd"
+                            android:textAllCaps="true"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
                             android:id="@+id/label_hora_extra_negativa"
-                            android:layout_width="180dp"
+                            android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
-                            android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:shadowColor="@color/colorAccent"
                             android:shadowRadius="2"
                             android:text="@string/horas_extras_negativas"
-                            android:textAlignment="textEnd"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="true"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -363,19 +389,33 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="6dp">
+
+                        <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="6dp"
+                            android:focusable="false"
+                            android:shadowColor="@color/colorAccent"
+                            android:shadowRadius="2"
+                            android:text="@string/horas"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="true"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <com.luizrodrigues.timesheetcalculator.layout.GradientTextView
                             android:id="@+id/label_hora_apontamento"
-                            android:layout_width="180dp"
+                            android:layout_width="160dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="12dp"
                             android:focusable="false"
                             android:shadowColor="@color/colorAccent"
                             android:shadowRadius="2"
                             android:text="@string/horas_apontamento"
-                            android:textAlignment="textEnd"
+                            android:textAlignment="textStart"
+                            android:textAllCaps="true"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 

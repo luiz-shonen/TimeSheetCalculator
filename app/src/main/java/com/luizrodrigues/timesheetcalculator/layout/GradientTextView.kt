@@ -1,18 +1,18 @@
 package com.luizrodrigues.timesheetcalculator.layout
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.util.AttributeSet
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import com.luizrodrigues.timesheetcalculator.R
-
 
 /**
  * Created by Luiz Rodrigues on 09/02/2020.
  */
-class GradientTextView : TextView {
+class GradientTextView : AppCompatTextView {
 
     constructor(context: Context?) : super(context)
 
@@ -24,6 +24,7 @@ class GradientTextView : TextView {
         defStyleAttr
     )
 
+    @SuppressLint("DrawAllocation")
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
         //Setting the gradient if layout is changed

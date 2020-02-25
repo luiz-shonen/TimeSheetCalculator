@@ -70,14 +70,14 @@ class TimeSheetCalculatorActivity : AppCompatActivity() {
         when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
             Configuration.UI_MODE_NIGHT_NO -> { // Night mode is not active, we're using the light theme
                 if (isVerifyingColor) {
-                    mainViewModel.corChangeDaynight.value = getColor(android.R.color.white)
+                    binding.changeDaynight.setColorFilter(getColor(android.R.color.white))
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 }
             }
             Configuration.UI_MODE_NIGHT_YES -> { // Night mode is active, we're using dark theme
                 if (isVerifyingColor) {
-                    mainViewModel.corChangeDaynight.value = getColor(android.R.color.black)
+                    binding.changeDaynight.setColorFilter(getColor(android.R.color.black))
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 }
