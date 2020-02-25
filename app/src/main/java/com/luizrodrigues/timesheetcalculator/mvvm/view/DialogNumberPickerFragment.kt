@@ -70,6 +70,6 @@ class DialogNumberPickerFragment(
         val hour = String.format("%02d", view.hour.value)
         val minute = String.format("%02d", view.minute.value)
         getClickedField()!!.value = "$hour:$minute"
-        dialog!!.cancel()
+        dialog!!.dismiss()
     }
 }

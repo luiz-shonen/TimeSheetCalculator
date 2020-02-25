@@ -30,4 +30,5 @@ class MainViewModel : ViewModel() {
     fun openNumberPickerDialog(clickedField: String) {
         showNumberPickerDialog.value = Pair(true, clickedField)
     }
+
 }
