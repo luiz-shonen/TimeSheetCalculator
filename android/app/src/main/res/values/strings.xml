@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TimeSheet Calculator</string>
+    <string name="horario_chegada">Horário de chegada</string>
+    <string name="horario_saida">Horário de saída</string>
+    <string name="helper_horario_chegada">Chegada na empresa</string>
+    <string name="helper_horario_saida">Saída da empresa</string>
+    <string name="helper_horario_saida_almoco">Saída para o almoço</string>
+    <string name="helper_horario_chegada_almoco">Chegada do almoço</string>
+    <string name="limpar">Limpar</string>
+    <string name="horas_trabalhadas">Horas Trabalhadas: </string>
+    <string name="horas_apontamento">Horas Apontamento: </string>
+    <string name="horas_extras_negativas">Horas extras/negativas: </string>
+    <string name="horas_base">Jornada de trabalho diária: </string>
+    <string name="horas_tolerancia">Tolerância: </string>
+    <string name="calcular">Calcular</string>
+    <string name="msg_erro_campo_obrigatorio">Este campo é obrigatório!</string>
+    <string name="user_photo">User Photo</string>
+    <string name="minus">-</string>
+</resources>
